@@ -1,0 +1,132 @@
+/* === Styles globaux === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background-color: #2563eb;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+/* === Formulaire === */
+.form-box {
+  background-color: white;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.form-box input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.form-box input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.form-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-box button:hover {
+  background-color: #1e4bb8;
+}
+
+#message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}
+
+#qrcode {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* === Dashboard admin === */
+.dashboard {
+  max-width: 1000px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #2563eb;
+}
+
+/* === Tableau === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+table th {
+  background-color: #2563eb;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* === Responsive === */
+@media screen and (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+}
