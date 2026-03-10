@@ -8,193 +8,138 @@
 
 <style>
 body{
-font-family: Arial, sans-serif;
-margin:0;
-background:#f4f6f9;
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f4f6fa;
+  text-align:center;
 }
+
 header{
-background:#0b3d91;
-color:white;
-padding:30px;
-text-align:center;
+  padding:40px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
-nav{
-background:#222;
-padding:10px;
-text-align:center;
+
+.logo{
+  width:280px;
+  max-width:90%;
+  display:block;
+  margin:auto;
 }
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-weight:bold;
+
+h1{
+  color:#1d2a57;
+  margin-top:20px;
 }
-nav a:hover{
-color:#00bfff;
-}
-section{
-padding:40px;
-}
+
 .container{
-max-width:1000px;
-margin:auto;
+  max-width:800px;
+  margin:auto;
+  padding:30px;
 }
-.card{
-background:white;
-padding:25px;
-margin:20px 0;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+.intro{
+  font-size:18px;
+  color:#444;
+  line-height:1.6;
+  margin-bottom:40px;
 }
-img{
-max-width:100%;
-border-radius:10px;
+
+.formulaire{
+  background:white;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  max-width:500px;
+  margin:auto;
 }
-h2{
-color:#0b3d91;
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
-form input, form textarea{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:5px;
-border:1px solid #ccc;
+
+input{
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:16px;
 }
+
 button{
-background:#0b3d91;
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:5px;
-cursor:pointer;
+  padding:12px;
+  background:#1d2a57;
+  color:white;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
 }
+
 button:hover{
-background:#062a63;
+  background:#30408f;
 }
+
+.message{
+  display:none;
+  margin-top:15px;
+  color:green;
+  font-weight:bold;
+}
+
 footer{
-background:#222;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
-}
-#msg{
-margin-top:10px;
-font-weight:bold;
+  margin-top:40px;
+  padding:20px;
+  background:#1d2a57;
+  color:white;
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-<h1>La GRH à l’ère de l’Intelligence Artificielle</h1>
-<p>Comment l’IA transforme la gestion des ressources humaines</p>
+  <img src="logo.png" alt="Logo GRH IA" class="logo">
+  <h1>La GRH à l’ère de l’Intelligence Artificielle</h1>
 </header>
 
-<nav>
-<a href="#intro">Introduction</a>
-<a href="#impact">Impact</a>
-<a href="#avantages">Avantages</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<section id="intro">
 <div class="container">
-<div class="card">
-<h2>Introduction</h2>
-<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995">
-<p>
-L’intelligence artificielle transforme aujourd’hui le monde du travail.
-Dans le domaine de la gestion des ressources humaines (GRH), elle permet
-d’automatiser certaines tâches et d’améliorer la prise de décision.
-</p>
-</div>
-</div>
-</section>
+  <div class="intro">
+    <p>
+      La gestion des ressources humaines connaît aujourd’hui une transformation majeure grâce à l’intelligence artificielle.
+      Les entreprises utilisent des outils intelligents pour améliorer le recrutement, analyser les données et optimiser la gestion des talents.
+    </p>
+    <p>
+      Cette conférence vise à explorer comment l’intelligence artificielle révolutionne la GRH, ses avantages, ses défis
+      et les nouvelles opportunités qu’elle offre aux organisations modernes.
+    </p>
+  </div>
 
-<section id="impact">
-<div class="container">
-<div class="card">
-<h2>Impact de l’IA sur la GRH</h2>
-<p>L’intelligence artificielle intervient dans plusieurs domaines :</p>
-<ul>
-<li>Automatisation du recrutement</li>
-<li>Analyse des performances des employés</li>
-<li>Gestion des talents</li>
-<li>Formation intelligente</li>
-</ul>
+  <div class="formulaire">
+    <h2>Inscription à la conférence</h2>
+    <form id="inscriptionForm">
+      <input type="text" placeholder="Nom complet" required>
+      <input type="email" placeholder="Adresse email" required>
+      <input type="text" placeholder="Université / Organisation" required>
+      <button type="submit">S'inscrire</button>
+    </form>
+    <p id="confirmation" class="message">
+      ✅ Inscription réussie ! Veuillez présenter ce message à l’accueil le jour de la conférence.
+    </p>
+  </div>
 </div>
-</div>
-</section>
-
-<section id="avantages">
-<div class="container">
-<div class="card">
-<h2>Avantages de l’IA</h2>
-<ul>
-<li>Gain de temps pour les recruteurs</li>
-<li>Réduction des erreurs humaines</li>
-<li>Meilleure analyse des données</li>
-<li>Amélioration de la productivité</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>Limites</h2>
-<ul>
-<li>Problèmes éthiques</li>
-<li>Dépendance à la technologie</li>
-<li>Risque de perte d’emplois</li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="contact">
-<div class="container">
-<div class="card">
-<h2>Contact / Inscription</h2>
-<form id="form">
-<input type="text" id="nom" placeholder="Votre nom" required>
-<input type="email" id="email" placeholder="Votre email" required>
-<textarea id="message" placeholder="Votre message"></textarea>
-<button type="submit">S'inscrire</button>
-<p id="msg"></p>
-</form>
-</div>
-</div>
-</section>
 
 <footer>
-<p>Projet universitaire - GRH et Intelligence Artificielle</p>
-<p>Réalisé par Alhassane Tounkara</p>
+  Projet universitaire — La GRH à l’ère de l’IA
 </footer>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbzO8n4lkB38-5lZc4SJYG2F-OquVJVrbahKOr52f9_JBaBKQMoCi_t1oqX5QJSQb8t4Sw/exec"
-const form = document.getElementById("form")
-const msg = document.getElementById("msg")
-
-form.addEventListener("submit", e => {
-e.preventDefault()
-fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify({
-nom:document.getElementById("nom").value,
-email:document.getElementById("email").value,
-message:document.getElementById("message").value
-})
-})
-.then(response => {
-msg.innerHTML="Inscription réussie ✅"
-form.reset()
-})
-.catch(error=>{
-msg.innerHTML="Erreur ❌"
-})
-})
+document.getElementById("inscriptionForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("confirmation").style.display="block";
+  this.reset();
+});
 </script>
 
 </body>
