@@ -1,56 +1,20 @@
-// 🔹 Remplace par l'URL Web App Google Sheets JSON
-const SHEET_JSON_URL = "https://script.google.com/macros/s/AKfycbxL28AgwosQE6gDiaaUy967idN-afCWxJ8QSgbopEEQSIFbUsZwwnxEf8Ys-vqm2O-CTQ/exec";
+// ID de ton Google Sheet et nom de la feuille
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/TON_ID_SHEET/edit"; // Pour référence
 
-const table = document.getElementById("table");
-const total = document.getElementById("total");
-const ctx = document.getElementById("chart").getContext("2d");
-let chart;
+// On utilise Google Sheets API ou fetch via Web App (une autre Web App qui renvoie JSON)
+// Ici exemple simple via fetch si tu modifies le script Apps Script pour renvoyer JSON
 
-function fetchData(){
-  fetch(SHEET_JSON_URL)
+fetch("https://script.google.com/macros/s/AKfycbzB1QIvdp54CV_ZYSYUoqlIfOJbC6lIaX8pHIJYqiteEXMVjxoaA4etIY648A3SlnchUQ/exec?action=get")
   .then(res => res.json())
   .then(data => {
-    table.innerHTML = "";
-
-    let stats = {};
-
-    data.forEach(p => {
-      table.innerHTML += `
-        <tr>
-          <td>${p.nom}</td>
-          <td>${p.prenom}</td>
-          <td>${p.email}</td>
-          <td>${p.telephone}</td>
-          <td>${new Date(p.date).toLocaleString()}</td>
-        </tr>
-      `;
-
-      let day = new Date(p.date).toLocaleDateString();
-      stats[day] = (stats[day] || 0) + 1;
+    const tbody = document.querySelector("#inscrits tbody");
+    data.forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${item.Nom}</td><td>${item.Email}</td><td>${item.Telephone}</td><td>${item.Date}</td>`;
+      tbody.appendChild(tr);
     });
-
-    total.innerText = data.length;
-
-    // Graphique
-    if(chart) chart.destroy();
-    chart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: Object.keys(stats),
-        datasets: [{
-          label: "Inscriptions",
-          data: Object.values(stats),
-          backgroundColor: "#2563eb"
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { display: false } }
-      }
-    });
+  })
+  .catch(err => {
+    alert("Erreur chargement des inscrits");
+    console.error(err);
   });
-}
-
-// Actualiser toutes les 10 secondes
-fetchData();
-setInterval(fetchData, 10000);
