@@ -108,7 +108,7 @@ form.addEventListener("submit", function(e) {
 
   const data = new FormData(form);
 
-  fetch("https://script.google.com/macros/s/AKfycbxCisBfxx3-5tUJvlQs6a_fy7bG3dF7Sum5HBhE8w6ca23FmEUttUmRcamexDoIeP0LDg/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbyAf3Obxg5MlqxlnfkKI82cS83BhICydF7vB6AinWLZh78q6E2exRh7c_H01F0x2szI6A/exec", {
     method: "POST",
     body: data
   })
@@ -119,7 +119,7 @@ form.addEventListener("submit", function(e) {
     btn.disabled = false;
   })
   .catch(err => {
-    alert("❌ Erreur lors de l'envoi");
+    alert("Erreur lors de l'envoi");
     btn.innerText = "S'inscrire";
     btn.disabled = false;
   });
