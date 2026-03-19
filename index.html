@@ -1,213 +1,129 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La GRH à l’ère de l’IA</title>
 
 <style>
-
-body{
-font-family:Arial,sans-serif;
-margin:0;
-background:#f4f6fa;
-text-align:center;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6fa;
 }
 
-header{
-padding:40px;
-background:white;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
+header {
+  background: linear-gradient(120deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-.logo{
-width:260px;
-max-width:90%;
-display:block;
-margin:auto;
+header img {
+  width: 80px;
+  display: block;
+  margin: 0 auto 10px;
 }
 
-h1{
-color:#1d2a57;
-margin-top:20px;
+section {
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
 }
 
-.container{
-max-width:800px;
-margin:auto;
-padding:30px;
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.intro{
-font-size:18px;
-color:#444;
-line-height:1.6;
-margin-bottom:40px;
+form input, form button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.formulaire{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-max-width:500px;
-margin:auto;
+form button {
+  background: #2a5298;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
+form button:hover {
+  background: #1e3c72;
 }
 
-input{
-padding:12px;
-border:1px solid #ccc;
-border-radius:6px;
-font-size:16px;
+.success {
+  display: none;
+  background: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
 }
-
-button{
-padding:12px;
-background:#1d2a57;
-color:white;
-border:none;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#30408f;
-}
-
-.message{
-display:none;
-margin-top:15px;
-color:green;
-font-weight:bold;
-}
-
-footer{
-margin-top:40px;
-padding:20px;
-background:#1d2a57;
-color:white;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<img src="logo.png" alt="Logo GRH IA" class="logo">
-
-<h1>La GRH à l’ère de l’Intelligence Artificielle</h1>
-
+  <img src="logo.png" alt="Logo">
+  <h1>La GRH à l’ère de l’IA</h1>
+  <p>Inscrivez-vous pour participer</p>
 </header>
 
-<div class="container">
+<section>
+  <div class="card">
+    <h2>Formulaire d'inscription</h2>
 
-<div class="intro">
+    <form id="form">
+      <input type="text" name="Nom" placeholder="Nom" required>
+      <input type="email" name="Email" placeholder="Email" required>
+      <input type="text" name="Téléphone" placeholder="Téléphone" required>
+      <button type="submit" id="btn">S'inscrire</button>
+    </form>
 
-<p>
-La gestion des ressources humaines connaît aujourd’hui une transformation majeure grâce à l’intelligence artificielle.
-Les entreprises utilisent des outils intelligents pour améliorer le recrutement, analyser les données et optimiser la gestion des talents.
-</p>
-
-<p>
-Cette conférence vise à explorer comment l’intelligence artificielle révolutionne la GRH, ses avantages, ses défis
-et les nouvelles opportunités qu’elle offre aux organisations modernes.
-</p>
-
-</div>
-
-<div class="formulaire">
-
-<h2>Inscription à la conférence</h2>
-
-<form id="inscriptionForm">
-
-<input type="text" name="nom" placeholder="Nom complet" required>
-
-<input type="email" name="email" placeholder="Adresse email" required>
-
-<input type="text" name="universite" placeholder="Université / Organisation" required>
-
-<button type="submit">S'inscrire</button>
-
-</form>
-
-<p id="confirmation" class="message">
-✅ Inscription réussie ! Veuillez présenter ce message à l’accueil le jour de la conférence.
-</p>
-
-</div>
-
-</div>
-
-<footer>
-
-Projet universitaire — La GRH à l’ère de l’IA
-
-</footer>
+    <div class="success" id="successMsg">
+      ✅ Inscription réussie ! Présentez-vous à l’accueil.
+    </div>
+  </div>
+</section>
 
 <script>
+const form = document.getElementById("form");
+const btn = document.getElementById("btn");
+const successMsg = document.getElementById("successMsg");
 
-document.getElementById("inscriptionForm").addEventListener("submit", async function(e){
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-e.preventDefault();
+  btn.innerText = "Envoi en cours...";
+  btn.disabled = true;
 
-const formData = new FormData(this);
+  const data = new FormData(form);
 
-const data = {
-
-nom: formData.get("nom"),
-
-email: formData.get("email"),
-
-universite: formData.get("universite")
-
-};
-
-try{
-
-const response = await fetch("https://script.google.com/macros/s/AKfycbyAf3Obxg5MlqxlnfkKI82cS83BhICydF7vB6AinWLZh78q6E2exRh7c_H01F0x2szI6A/exec",{
-
-method:"POST",
-
-body:JSON.stringify(data),
-
-headers:{
-
-"Content-Type":"application/json"
-
-}
-
+  fetch("https://script.google.com/macros/s/AKfycbxCisBfxx3-5tUJvlQs6a_fy7bG3dF7Sum5HBhE8w6ca23FmEUttUmRcamexDoIeP0LDg/exec", {
+    method: "POST",
+    body: data
+  })
+  .then(res => {
+    successMsg.style.display = "block";
+    form.reset();
+    btn.innerText = "S'inscrire";
+    btn.disabled = false;
+  })
+  .catch(err => {
+    alert("❌ Erreur lors de l'envoi");
+    btn.innerText = "S'inscrire";
+    btn.disabled = false;
+  });
 });
-
-const result = await response.json();
-
-if(result.result === "success"){
-
-document.getElementById("confirmation").style.display="block";
-
-document.getElementById("inscriptionForm").reset();
-
-}
-
-}catch(error){
-
-alert("Erreur lors de l'inscription. Vérifiez votre connexion.");
-
-}
-
-});
-
 </script>
 
 </body>
