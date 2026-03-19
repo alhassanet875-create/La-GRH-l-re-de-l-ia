@@ -2,45 +2,33 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard Admin - La GRH à l’ère de l’IA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - GRH IA</title>
 <link rel="stylesheet" href="style.css">
-
-<!-- Chart.js pour statistiques -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
-<h1 style="text-align:center">Dashboard Admin - La GRH à l’ère de l’IA</h1>
 
-<div class="dashboard">
+<header>
+  <img src="logo.png" alt="Logo">
+  <h1>Administration des inscriptions</h1>
+</header>
 
-<div class="card">
-<h2>Total des inscrits</h2>
-<p id="total"></p>
-</div>
-
-<div class="card">
-<h2>Statistiques par jour</h2>
-<canvas id="chart"></canvas>
-</div>
-
-<div class="card">
-<h2>Liste des participants</h2>
-<table>
-<thead>
-<tr>
-<th>Nom</th>
-<th>Prénom</th>
-<th>Email</th>
-<th>Téléphone</th>
-<th>Date</th>
-</tr>
-</thead>
-<tbody id="table"></tbody>
-</table>
-</div>
-
-</div>
+<section>
+  <div class="card">
+    <h2>Liste des inscrits</h2>
+    <table id="inscrits" border="1" style="width:100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Telephone</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
 
 <script src="admin.js"></script>
 </body>
