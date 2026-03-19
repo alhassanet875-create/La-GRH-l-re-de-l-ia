@@ -4,70 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La GRH à l’ère de l’IA</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6fa;
-}
-
-header {
-  background: linear-gradient(120deg, #1e3c72, #2a5298);
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-header img {
-  width: 80px;
-  display: block;
-  margin: 0 auto 10px;
-}
-
-section {
-  padding: 30px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-form input, form button {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-form button {
-  background: #2a5298;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-form button:hover {
-  background: #1e3c72;
-}
-
-.success {
-  display: none;
-  background: #d4edda;
-  color: #155724;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-  text-align: center;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -81,11 +18,10 @@ form button:hover {
 <section>
   <div class="card">
     <h2>Formulaire d'inscription</h2>
-
     <form id="form">
       <input type="text" name="Nom" placeholder="Nom" required>
       <input type="email" name="Email" placeholder="Email" required>
-      <input type="text" name="Téléphone" placeholder="Téléphone" required>
+      <input type="text" name="Telephone" placeholder="Téléphone" required>
       <button type="submit" id="btn">S'inscrire</button>
     </form>
 
@@ -95,36 +31,6 @@ form button:hover {
   </div>
 </section>
 
-<script>
-const form = document.getElementById("form");
-const btn = document.getElementById("btn");
-const successMsg = document.getElementById("successMsg");
-
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  btn.innerText = "Envoi en cours...";
-  btn.disabled = true;
-
-  const data = new FormData(form);
-
-  fetch("https://script.google.com/macros/s/AKfycbyAf3Obxg5MlqxlnfkKI82cS83BhICydF7vB6AinWLZh78q6E2exRh7c_H01F0x2szI6A/exec", {
-    method: "POST",
-    body: data
-  })
-  .then(res => {
-    successMsg.style.display = "block";
-    form.reset();
-    btn.innerText = "S'inscrire";
-    btn.disabled = false;
-  })
-  .catch(err => {
-    alert("Erreur lors de l'envoi");
-    btn.innerText = "S'inscrire";
-    btn.disabled = false;
-  });
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
