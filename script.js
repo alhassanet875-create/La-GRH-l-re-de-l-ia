@@ -1,35 +1,28 @@
 const form = document.getElementById("form");
+const btn = document.getElementById("btn");
+const successMsg = document.getElementById("successMsg");
 
-// 🔹 Remplace par l'URL Web App Google Sheets que tu as obtenu
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbxL28AgwosQE6gDiaaUy967idN-afCWxJ8QSgbopEEQSIFbUsZwwnxEf8Ys-vqm2O-CTQ/exec";
-
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", function(e) {
   e.preventDefault();
+  btn.innerText = "Envoi en cours...";
+  btn.disabled = true;
 
-  const nom = document.getElementById("nom").value;
-  const prenom = document.getElementById("prenom").value;
-  const email = document.getElementById("email").value;
-  const telephone = document.getElementById("telephone").value;
+  const data = new FormData(form);
 
-  fetch(SHEET_URL, {
+  fetch("https://script.google.com/macros/s/AKfycbzB1QIvdp54CV_ZYSYUoqlIfOJbC6lIaX8pHIJYqiteEXMVjxoaA4etIY648A3SlnchUQ/exec", {
     method: "POST",
-    body: JSON.stringify({nom, prenom, email, telephone})
+    body: data
   })
-  .then(res => res.json())
-  .then(data => {
-    if(data.status === "success"){
-      document.getElementById("message").innerText = "Inscription réussie !";
-
-      // QR Code avec nom + prénom + email
-      document.getElementById("qrcode").innerHTML = "";
-      new QRCode(document.getElementById("qrcode"), {
-        text: `${nom} ${prenom} ${email}`,
-        width: 128,
-        height: 128
-      });
-
-      form.reset();
-    }
+  .then(res => {
+    successMsg.style.display = "block";
+    form.reset();
+    btn.innerText = "S'inscrire";
+    btn.disabled = false;
+    setTimeout(() => { successMsg.style.display = "none"; }, 5000);
   })
-  .catch(err => console.error(err));
+  .catch(err => {
+    alert("❌ Erreur lors de l'envoi");
+    btn.innerText = "S'inscrire";
+    btn.disabled = false;
+  });
 });
